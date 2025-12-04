@@ -33,24 +33,56 @@ const EquipmentCards: React.FC<EquipmentCardsProps> = ({
   loading = false,
 }) => {
 
+  // ✅ ONE ROW SKELETON PLACEHOLDER
   if (loading) {
     return (
-      <Box sx={{ display: 'flex', gap: 2, mb: 3, flexWrap: 'wrap' }}>
+      <Box
+        sx={{
+          display: 'flex',
+          gap: 2,
+          mb: 3,
+          flexWrap: 'nowrap',
+          overflowX: 'auto',
+          whiteSpace: 'nowrap',
+          pb: 1
+        }}
+      >
         {[1, 2, 3, 4, 5, 6].map((i) => (
           <Skeleton
             key={i}
             variant="rectangular"
             width={180}
             height={100}
-            sx={{ borderRadius: 2 }}
+            sx={{ borderRadius: 2, flexShrink: 0 }}
           />
         ))}
       </Box>
     );
   }
 
+  // ✅ MAIN EQUIPMENT ROW — SINGLE ROW + SCROLL
   return (
-    <Box sx={{ display: 'flex', gap: 2, mb: 3, flexWrap: 'wrap' }}>
+    <Box
+      sx={{
+        display: 'flex',
+        gap: 2,
+        mb: 3,
+        flexWrap: 'nowrap',            // ✅ no wrapping
+        overflowX: 'auto',             // ✅ horizontal scroll
+        whiteSpace: 'nowrap',
+        pb: 1,
+        WebkitOverflowScrolling: 'touch',
+
+        // ✅ scrollbar styling
+        '&::-webkit-scrollbar': {
+          height: '6px'
+        },
+        '&::-webkit-scrollbar-thumb': {
+          backgroundColor: '#c7c7c7',
+          borderRadius: '6px'
+        }
+      }}
+    >
       {equipments.map((equipment) => {
         const isSelected = selected?.id === equipment.id;
 
@@ -60,6 +92,7 @@ const EquipmentCards: React.FC<EquipmentCardsProps> = ({
             badgeContent={0}
             color="error"
             sx={{
+              flexShrink: 0,   // ✅ keeps card width fixed
               '& .MuiBadge-badge': {
                 right: 8,
                 top: 8,
@@ -89,9 +122,10 @@ const EquipmentCards: React.FC<EquipmentCardsProps> = ({
               }}
             >
               <CardContent sx={{ textAlign: 'center', py: 2.5, px: 2 }}>
+
                 <Box
                   sx={{
-                    color: isSelected ? '#ea580c' : '#ea580c',
+                    color: '#ea580c',
                     mb: 1.5,
                     display: 'flex',
                     justifyContent: 'center',
@@ -113,6 +147,7 @@ const EquipmentCards: React.FC<EquipmentCardsProps> = ({
                 >
                   {equipment.equipment_name}
                 </Typography>
+
               </CardContent>
             </Card>
           </Badge>
