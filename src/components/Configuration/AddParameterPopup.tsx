@@ -155,76 +155,75 @@ const [integerValue, setIntegerValue] = useState("");
 
         {/* CONDITIONAL FIELDS */}
         {/* Decimal → show Min & Max */}
-        {dataType === "Decimal" && (
-          <Box sx={{ display: "flex", gap: "16px", justifyContent: "space-between" }}>
-  {/* Min °C TextField */}
-  <TextField
-    label="Min °C"
-    size="small"
-    value={minValue}
-    onChange={(e) => setMinValue(e.target.value)}
-    InputLabelProps={{ shrink: true }}
-    sx={{      
-      width: "182px",     
-      "& .MuiInputLabel-root": { color: "#5F646F !important" },
-      "& .MuiInputLabel-root.Mui-focused": { color: "#5F646F !important" },
-      
-      "& .MuiOutlinedInput-root": {
-       
-        height: "50px", 
-        borderRadius: "10px", 
-        
-        "& fieldset": { 
-          borderColor: "#CFD1D4",
-          borderWidth: "1px", 
-        "&:hover fieldset": { borderColor: "#CFD1D4" },
-        "&.Mui-focused fieldset": { borderColor: "#CFD1D4" },
-      },
-      
-      "& .MuiInputBase-input": { 
-        color: "#5F646F", 
-       
-        padding: "10px 10px",
-      },
-    }}
-  />
-
-  {/* Max °C TextField */}
-  <TextField
-    label="Max °C"
+        {/* Decimal → show Min & Max */}
+{dataType === "Decimal" && (
+  <Box sx={{ display: "flex", gap: "16px", justifyContent: "space-between" }}>
     
-    size="small"
-    value={maxValue}
-    onChange={(e) => setMaxValue(e.target.value)}
-    InputLabelProps={{ shrink: true }}
-    sx={{
-      width: "182px",
+    {/* Min °C TextField */}
+    <TextField
+      label="Min °C"
+      size="small"
+      value={minValue}
+      onChange={(e) => setMinValue(e.target.value)}
+      InputLabelProps={{ shrink: true }}
+      sx={{
+        width: "182px",
+        "& .MuiInputLabel-root": { color: "#5F646F !important" },
+        "& .MuiInputLabel-root.Mui-focused": { color: "#5F646F !important" },
 
-      "& .MuiInputLabel-root": { color: "#5F646F !important" },
-      "& .MuiInputLabel-root.Mui-focused": { color: "#5F646F !important" },
-      
-      "& .MuiOutlinedInput-root": {
-       
-        height: "50px", 
-        borderRadius: "10px",
-        
-        "& fieldset": { 
-          borderColor: "#CFD1D4", 
-          borderWidth: "1px",
+        "& .MuiOutlinedInput-root": {
+          height: "50px",
+          borderRadius: "10px",
+
+          "& fieldset": {
+            borderColor: "#CFD1D4",
+            borderWidth: "1px",
+          },
+          "&:hover fieldset": { borderColor: "#CFD1D4" },
+          "&.Mui-focused fieldset": { borderColor: "#CFD1D4" },
         },
-        "&:hover fieldset": { borderColor: "#CFD1D4" },
-        "&.Mui-focused fieldset": { borderColor: "#CFD1D4" },
-      },
-      
-      "& .MuiInputBase-input": { 
-        color: "#5F646F", 
-        // --- 3. 
-        padding: "10px 16px",
-      },
-    }}
-  />
-</Box>
-        )}
+
+        "& .MuiInputBase-input": {
+          color: "#5F646F",
+          padding: "10px 10px",
+        },
+      }}
+    />
+
+    {/* Max °C TextField */}
+    <TextField
+      label="Max °C"
+      size="small"
+      value={maxValue}
+      onChange={(e) => setMaxValue(e.target.value)}
+      InputLabelProps={{ shrink: true }}
+      sx={{
+        width: "182px",
+        "& .MuiInputLabel-root": { color: "#5F646F !important" },
+        "& .MuiInputLabel-root.Mui-focused": { color: "#5F646F !important" },
+
+        "& .MuiOutlinedInput-root": {
+          height: "50px",
+          borderRadius: "10px",
+
+          "& fieldset": {
+            borderColor: "#CFD1D4",
+            borderWidth: "1px",
+          },
+          "&:hover fieldset": { borderColor: "#CFD1D4" },
+          "&.Mui-focused fieldset": { borderColor: "#CFD1D4" },
+        },
+
+        "& .MuiInputBase-input": {
+          color: "#5F646F",
+          padding: "10px 16px",
+        },
+      }}
+    />
+
+  </Box>
+)}
+
 
         {/* Select (Multiple Selection) → Checkboxes */}
    {dataType === "Select" && (
@@ -299,7 +298,6 @@ const [integerValue, setIntegerValue] = useState("");
       },
       
       "& .MuiOutlinedInput-root": {
-        -
         height: "50px",
         paddingTop: "0", 
         paddingBottom: "0",
