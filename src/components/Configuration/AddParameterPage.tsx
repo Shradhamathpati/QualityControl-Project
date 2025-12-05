@@ -261,7 +261,7 @@ const AddParameterPage = () => {
           <Typography fontWeight={600}>Added Parameters:</Typography>
           <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1, mt: 1 }}>
             {parameters.map((p, i) => (
-              <Chip key={i} label={`${p.name} (${p.dataType})`} />
+              <Chip key={i} label={`${p.name} (${p.dataType}) ${p.minValue} ${p.maxValue} ${p.dropdownValue} ${p.textValue} ${p.selectedOptions} ${p.percentage} ${p.integerValue}`} />
             ))}
           </Box>
         </Box>
