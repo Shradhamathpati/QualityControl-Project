@@ -16,9 +16,9 @@ const AddParameterPopup: React.FC<Props> = ({ open, onClose, onAdd }) => {
 
   const [dropdownValue, setDropdownValue] = useState("");
   const [textValue, setTextValue] = useState("");
-const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
-const [percentage, setPercentage] = useState("");
-const [integerValue, setIntegerValue] = useState("");
+  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+  const [percentage, setPercentage] = useState("");
+  const [integerValue, setIntegerValue] = useState("");
 
   useEffect(() => {
     if (open) {
@@ -74,12 +74,13 @@ const [integerValue, setIntegerValue] = useState("");
           label="Name"
           fullWidth
           size="small"
+          required
           value={name}
           onChange={(e) => setName(e.target.value)}
           InputLabelProps={{ shrink: true }}
           sx={{
              width: "380px", 
-          "& .MuiInputLabel-root.Mui-focused": {
+      "& .MuiInputLabel-root.Mui-focused": {
         color: "#232323 !important", 
       },
       
@@ -88,7 +89,6 @@ const [integerValue, setIntegerValue] = useState("");
       },
       
       "& .MuiOutlinedInput-root": {
-        
         height: "50px", 
         paddingTop: "0", 
         paddingBottom: "0",
@@ -117,9 +117,6 @@ const [integerValue, setIntegerValue] = useState("");
           InputLabelProps={{ shrink: true }}
           sx={{
              width: "380px", 
-     
-      
-      
       "& .MuiInputLabel-root.Mui-focused": {
         color: "#232323 !important", 
       },
@@ -129,6 +126,7 @@ const [integerValue, setIntegerValue] = useState("");
       },
       
       "& .MuiOutlinedInput-root": {
+        
         height: "50px", 
         paddingTop: "0", 
         paddingBottom: "0",
@@ -155,75 +153,76 @@ const [integerValue, setIntegerValue] = useState("");
 
         {/* CONDITIONAL FIELDS */}
         {/* Decimal → show Min & Max */}
-        {/* Decimal → show Min & Max */}
-{dataType === "Decimal" && (
-  <Box sx={{ display: "flex", gap: "16px", justifyContent: "space-between" }}>
+        {dataType === "Decimal" && (
+          <Box sx={{ display: "flex", gap: "16px", justifyContent: "space-between" }}>
+  {/* Min °C TextField */}
+  <TextField
+    label="Min °C"
+    size="small"
+    value={minValue}
+    onChange={(e) => setMinValue(e.target.value)}
+    InputLabelProps={{ shrink: true }}
+    sx={{      
+      width: "182px",     
+      "& .MuiInputLabel-root": { color: "#5F646F !important" },
+      "& .MuiInputLabel-root.Mui-focused": { color: "#5F646F !important" },
+      
+      "& .MuiOutlinedInput-root": {
+       
+        height: "50px", 
+        borderRadius: "10px", 
+        
+        "& fieldset": { 
+          borderColor: "#CFD1D4",
+          borderWidth: "1px", 
+        "&:hover fieldset": { borderColor: "#CFD1D4" },
+        "&.Mui-focused fieldset": { borderColor: "#CFD1D4" },
+      },
+      
+      "& .MuiInputBase-input": { 
+        color: "#5F646F", 
+       
+        padding: "10px 10px",
+      },
+    }}
+  />
+
+  {/* Max °C TextField */}
+  <TextField
+    label="Max °C"
     
-    {/* Min °C TextField */}
-    <TextField
-      label="Min °C"
-      size="small"
-      value={minValue}
-      onChange={(e) => setMinValue(e.target.value)}
-      InputLabelProps={{ shrink: true }}
-      sx={{
-        width: "182px",
-        "& .MuiInputLabel-root": { color: "#5F646F !important" },
-        "& .MuiInputLabel-root.Mui-focused": { color: "#5F646F !important" },
+    size="small"
+    value={maxValue}
+    onChange={(e) => setMaxValue(e.target.value)}
+    InputLabelProps={{ shrink: true }}
+    sx={{
+      width: "182px",
 
-        "& .MuiOutlinedInput-root": {
-          height: "50px",
-          borderRadius: "10px",
-
-          "& fieldset": {
-            borderColor: "#CFD1D4",
-            borderWidth: "1px",
-          },
-          "&:hover fieldset": { borderColor: "#CFD1D4" },
-          "&.Mui-focused fieldset": { borderColor: "#CFD1D4" },
+      "& .MuiInputLabel-root": { color: "#5F646F !important" },
+      "& .MuiInputLabel-root.Mui-focused": { color: "#5F646F !important" },
+      
+      "& .MuiOutlinedInput-root": {
+       
+        height: "50px", 
+        borderRadius: "10px",
+        
+        "& fieldset": { 
+          borderColor: "#CFD1D4", 
+          borderWidth: "1px",
         },
-
-        "& .MuiInputBase-input": {
-          color: "#5F646F",
-          padding: "10px 10px",
-        },
-      }}
-    />
-
-    {/* Max °C TextField */}
-    <TextField
-      label="Max °C"
-      size="small"
-      value={maxValue}
-      onChange={(e) => setMaxValue(e.target.value)}
-      InputLabelProps={{ shrink: true }}
-      sx={{
-        width: "182px",
-        "& .MuiInputLabel-root": { color: "#5F646F !important" },
-        "& .MuiInputLabel-root.Mui-focused": { color: "#5F646F !important" },
-
-        "& .MuiOutlinedInput-root": {
-          height: "50px",
-          borderRadius: "10px",
-
-          "& fieldset": {
-            borderColor: "#CFD1D4",
-            borderWidth: "1px",
-          },
-          "&:hover fieldset": { borderColor: "#CFD1D4" },
-          "&.Mui-focused fieldset": { borderColor: "#CFD1D4" },
-        },
-
-        "& .MuiInputBase-input": {
-          color: "#5F646F",
-          padding: "10px 16px",
-        },
-      }}
-    />
-
-  </Box>
-)}
-
+        "&:hover fieldset": { borderColor: "#CFD1D4" },
+        "&.Mui-focused fieldset": { borderColor: "#CFD1D4" },
+      },
+      
+      "& .MuiInputBase-input": { 
+        color: "#5F646F", 
+        // --- 3. 
+        padding: "10px 16px",
+      },
+    }}
+  />
+</Box>
+        )}
 
         {/* Select (Multiple Selection) → Checkboxes */}
    {dataType === "Select" && (
@@ -262,7 +261,7 @@ const [integerValue, setIntegerValue] = useState("");
           borderColor: "#CFD1D4", 
         },
         "&.Mui-focused fieldset": {
-          borderColor: "#CFD1D4 !important", 
+          borderColor: "#CFD1D4 !important",
         },
       },
     }}
@@ -298,15 +297,16 @@ const [integerValue, setIntegerValue] = useState("");
       },
       
       "& .MuiOutlinedInput-root": {
+        -
         height: "50px",
         paddingTop: "0", 
         paddingBottom: "0",
 
         "& fieldset": {
-          borderColor: "#CFD1D4", 
+          borderColor: "#CFD1D4",
         },
         "&:hover fieldset": {
-          borderColor: "#CFD1D4", 
+          borderColor: "#CFD1D4",
         },
         "&.Mui-focused fieldset": {
           borderColor: "#CFD1D4 !important",
@@ -342,7 +342,7 @@ const [integerValue, setIntegerValue] = useState("");
       },
               
         "& .MuiOutlinedInput-root": {
-          height: "50px",
+          height: "50px", 
           borderRadius: "10px",
 
           "& fieldset": {
@@ -352,6 +352,8 @@ const [integerValue, setIntegerValue] = useState("");
           "&:hover fieldset": {
             borderColor: "#CFD1D4",
           },
+          
+          
           "&.Mui-focused fieldset": {
             borderColor: "#CFD1D4 !important",
           },
@@ -383,19 +385,19 @@ const [integerValue, setIntegerValue] = useState("");
         color: "#5F646F !important",
       },
       
-      "& .MuiOutlinedInput-root": {
+      "& .MuiOutlinedInput-root": { 
         height: "50px", 
         paddingTop: "0", 
         paddingBottom: "0",
 
         "& fieldset": {
-          borderColor: "#CFD1D4",
+          borderColor: "#CFD1D4", 
         },
         "&:hover fieldset": {
-          borderColor: "#CFD1D4",
+          borderColor: "#CFD1D4", 
         },
         "&.Mui-focused fieldset": {
-          borderColor: "#CFD1D4 !important",
+          borderColor: "#CFD1D4 !important", 
         },
       },
     }}
@@ -422,6 +424,7 @@ const [integerValue, setIntegerValue] = useState("");
       },
       
       "& .MuiOutlinedInput-root": {
+      
         height: "50px", 
         paddingTop: "0", 
         paddingBottom: "0",
@@ -433,7 +436,7 @@ const [integerValue, setIntegerValue] = useState("");
           borderColor: "#CFD1D4", 
         },
         "&.Mui-focused fieldset": {
-          borderColor: "#CFD1D4 !important",
+          borderColor: "#CFD1D4 !important", 
         },
       },
     }}
